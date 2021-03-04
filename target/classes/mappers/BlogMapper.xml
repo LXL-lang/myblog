@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxl.mapper.BlogMapper">
+    <resultMap id="blogMap" type="com.lxl.pojo.Blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="firstPicture" column="first_picture"/>
+        <result property="flag" column="flag"/>
+        <result property="views" column="views"/>
+        <result property="appreciation" column="appreciation"/>
+        <result property="shareStatement" column="share_statement"/>
+        <result property="commentabled" column="commentabled"/>
+        <result property="published" column="published"/>
+        <result property="recommend" column="recommend"/>
+        <result property="description" column="description"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="tagIds" column="tag_ids"/>
+        <result property="typeId" column="type_id"/>
+        <result property="userId" column="user_id"/>
+        <association property="type" javaType="com.lxl.pojo.Type">
+            <id  column="tid" property="id" />
+            <result property="name" column="name"/>
+        </association>
+        <association property="user" javaType="com.lxl.pojo.User">
+            <id  column="uid" property="id"/>
+            <result property="nickname" column="nickname"/>
+            <result property="avatar" column="avatar"/>
+        </association>
+        <collection property="tags" ofType="com.lxl.pojo.Tag">
+        </collection>
+    </resultMap>
+
+<!--    新增一个类型-->
+    <insert id="save" parameterType="com.lxl.pojo.Blog" >
+        <selectKey resultType="long" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+            insert into t_blog values
+            (null,#{title},#{content},#{firstPicture},#{flag},
+            #{views},#{appreciation},#{shareStatement},#{commentabled},
+            #{published},#{recommend},#{createTime},#{updateTime},
+            #{type.id},#{user.id},#{description},#{tagIds})
+
+    </insert>
+<!--    添加博客的同时要添加中间表-->
+    <insert id="saveTagAndBlog" parameterType="map">
+        insert into t_blog_tags values (null,#{tagId},#{blogId});
+    </insert>
+<!--    更新博客时views不更新-->
+    <update id="update" parameterType="com.lxl.pojo.Blog">
+        update t_blog set
+          title = #{title},content = #{content},first_picture = #{firstPicture},
+          flag = #{flag} ,appreciation = #{appreciation},share_statement = #{shareStatement},
+          commentabled = #{commentabled} ,published = #{published},recommend = #{recommend} ,
+          update_time = #{updateTime},type_id = #{type.id},user_id=#{user.id},
+          description = #{description} ,tag_ids = #{tagIds}
+        where id=#{id}
+    </update>
+    <update id="updateViews" parameterType="long">
+        update t_blog set views=views+1
+        where id=#{id}
+    </update>
+
+    <delete id="deleteById" parameterType="long">
+        delete from t_blog where id=#{id}
+    </delete>
+<!--    删除t_blog_tags中间表中的-->
+    <delete id="deleteTagAndBlog" parameterType="long">
+        delete from t_blog_tags where blog_id=#{blogId}
+    </delete>
+
+    <select id="getBlogById"  resultMap="blogMap"  parameterType="long">
+        select * from t_blog where id=#{id}
+    </select>
+    <select id="getBlogByTitle" resultType="int" parameterType="string">
+        select count(id) from t_blog where title=#{title}
+    </select>
+<!--    动态查询blog，有没有条件都可以-->
+    <select id="findBlogsBySearch" resultMap="blogMap" parameterType="com.lxl.vo.BlogQuery">
+        select b.id,b.title,b.description,b.recommend,b.published,b.update_time,t.id  tid,t.name
+        from t_blog b,t_type t
+        <where>
+           <if test="1==1">
+             and  b.type_id = t.id
+           </if>
+           <if test="title !=null and title!=''">
+              and b.title like concat('%',#{title},'%')
+           </if>
+            <if test="typeId!=null">
+                and type_id=#{typeId}
+            </if>
+            <if test="recommend==true">
+                and b.recommend=#{recommend}
+            </if>
+            <if test="draft==true">
+                and b.published=#{published}
+            </if>
+        </where>
+        order by  update_time desc
+    </select>
+    <select id="findAll"  resultMap="blogMap">
+        select b.id,b.title,b.description,u.id uid,u.nickname,u.avatar,b.views,b.update_time,b.first_picture,t.id tid,t.name
+        from t_blog b,t_type t,t_user u
+        where b.published=1 and b.type_id = t.id and b.user_id=u.id
+        order by b.update_time desc
+    </select>
+    <select id="findrecommendTop" resultType="com.lxl.pojo.Blog">
+        select id,title from t_blog
+        where recommend=1 and published=1
+        order by update_time desc
+        limit #{size}
+    </select>
+    <select id="findBlogsByString" resultMap="blogMap" parameterType="string">
+        select b.id,b.title,b.description,u.id uid,u.nickname,u.avatar,b.views,b.update_time,b.first_picture,t.id tid,t.name
+        from t_blog b,t_type t,t_user u
+        where  b.published=1 and b.type_id = t.id and b.user_id=u.id
+        and (b.title like #{query} or b.content like #{query} or b.description like #{query})
+        order by b.update_time desc
+    </select>
+    <select id="getBlogDetailById" resultMap="blogMap" parameterType="long">
+        select b.*,
+               u.id uid,u.avatar,u.nickname,t.id tid,t.name
+        from t_blog b,t_type t,t_user u
+        where b.id=#{id} and b.type_id = t.id and b.user_id=u.id
+    </select>
+    <select id="findByTypeId" resultMap="blogMap">
+        select b.*,
+               u.id uid,u.avatar,u.nickname,t.id tid,t.name
+        from t_blog b,t_type t,t_user u
+        where  b.type_id = t.id and b.user_id=u.id and b.type_id=#{id} and b.published=1
+        order by b.update_time desc
+    </select>
+    <select id="findByTagId" resultMap="blogMap">
+        select b.*,u.id uid,u.avatar,u.nickname,t.id tid,t.name
+            from t_blog b,t_blog_tags bt,t_user u,t_type t
+        where bt.tag_id=#{tagId}  and bt.blog_id=b.id and b.user_id=u.id and b.published=1
+        and b.type_id = t.id
+        order by b.update_time desc
+    </select>
+<!--    查询出博客的所有的年份-->
+    <select id="findGroupYear" resultType="java.lang.String">
+        select date_format(b.update_time,'%Y') as year
+        from t_blog b
+        group  by year order by year desc
+    </select>
+<!--    通过年份查找出所在年份的Blog-->
+    <select id="findByYear" resultMap="blogMap" parameterType="string">
+        select *
+        from t_blog
+        where date_format(update_time,'%Y')=#{year}
+        ORDER BY update_time desc
+    </select>
+    <select id="countBlog" resultType="java.lang.Long">
+        select count(id)
+        from t_blog
+        where published=1
+    </select>
+    <select id="findLastUpdateTime" resultType="java.util.Date">
+        select max(update_time) from t_blog where published=1
+    </select>
+</mapper>

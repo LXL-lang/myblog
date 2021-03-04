@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8147903c-2bc2-453e-ab90-76c0de7936db" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\myjava\apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="C:\myjava\apache-maven-3.5.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1omKlAHFIkLwPEKV3w4pDvMNAec" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\myblog\src\main\resources" />
+      <recent name="D:\IdeaProjects\myblog\src\main\resources\mappers" />
+      <recent name="D:\IdeaProjects\myblog\src\main\resources\static\css" />
+      <recent name="D:\IdeaProjects\myblog\src\main\resources\static\js" />
+      <recent name="D:\IdeaProjects\myblog\src\main\resources\static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\myblog" />
+      <recent name="D:\IdeaProjects\myblog\src\main\resources" />
+      <recent name="D:\IdeaProjects\myblog\src\main\resources\static\images" />
+      <recent name="D:\IdeaProjects\myblog\src\main\resources\i18n" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.lxl" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.lxl.controller" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MyblogApplication">
+    <configuration name="MD5Utils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lxl.util.MD5Utils" />
+      <module name="myblog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lxl.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyblogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="myblog" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lxl.MyblogApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MD5Utils" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8147903c-2bc2-453e-ab90-76c0de7936db" name="Default Changelist" comment="" />
+      <created>1613886474005</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613886474005</updated>
+      <workItem from="1613886475146" duration="4386000" />
+      <workItem from="1613890956267" duration="2303000" />
+      <workItem from="1613893718417" duration="14902000" />
+      <workItem from="1613910930447" duration="15495000" />
+      <workItem from="1613962284819" duration="43424000" />
+      <workItem from="1614045612029" duration="38362000" />
+      <workItem from="1614130691422" duration="33760000" />
+      <workItem from="1614169235903" duration="764000" />
+      <workItem from="1614170328759" duration="9082000" />
+      <workItem from="1614219767497" duration="43386000" />
+      <workItem from="1614304102389" duration="44895000" />
+      <workItem from="1614391773881" duration="34619000" />
+      <workItem from="1614430182364" duration="10108000" />
+      <workItem from="1614479478770" duration="30822000" />
+      <workItem from="1614512629658" duration="14606000" />
+      <workItem from="1614563494751" duration="2615000" />
+      <workItem from="1614575105050" duration="13038000" />
+      <workItem from="1614603133517" duration="7600000" />
+      <workItem from="1614652402565" duration="20680000" />
+      <workItem from="1614737772902" duration="596000" />
+      <workItem from="1614761222904" duration="598000" />
+      <workItem from="1614776720166" duration="67000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.github.pagehelper.PageInfo" memberName="total" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>

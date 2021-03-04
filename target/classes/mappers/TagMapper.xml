@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxl.mapper.TagMapper">
+    <resultMap id="tagMap" type="com.lxl.pojo.Tag">
+        <id column="id" property="id"/>
+        <result property="name" column="name"/>
+        <collection property="blogs" ofType="com.lxl.pojo.Blog">
+            <id column="bid" property="id"/>
+        </collection>
+    </resultMap>
+<!--    新增一个类型-->
+
+    <insert id="save" parameterType="com.lxl.pojo.Tag" >
+        insert into t_tag values (#{id},#{name})
+    </insert>
+    <update id="updateTag" parameterType="map">
+        update t_tag set name=#{tag.name} where id=#{id}
+    </update>
+    <delete id="delete" parameterType="long">
+        delete from t_tag where id=#{id}
+    </delete>
+
+    <select id="findAll" resultType="com.lxl.pojo.Tag">
+        select * from t_tag order by  id desc
+    </select>
+    <select id="getTagByName" resultType="com.lxl.pojo.Tag" parameterType="string">
+        select * from t_tag where name=#{name}
+    </select>
+    <select id="getTagById" resultType="com.lxl.pojo.Tag" parameterType="long">
+        select * from t_tag where id=#{id}
+    </select>
+    <select id="findByIds" parameterType="list" resultType="com.lxl.pojo.Tag">
+        select * from t_tag
+        <where>
+            <foreach collection="list" open="id in(" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="findTop" resultMap="tagMap">
+         select t.id ,t.name
+        from t_tag t
+    </select>
+</mapper>

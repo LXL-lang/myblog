@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxl.mapper.CommentMapper">
+    <resultMap id="commentMap" type="com.lxl.pojo.Comment">
+        <id column="id" property="id"/>
+        <result property="nickname" column="nickname"/>
+        <result property="email" column="email"/>
+        <result property="content" column="content"/>
+        <result property="avatar" column="avatar"/>
+        <result property="createTime" column="create_time"/>
+        <result property="adminComment" column="adminComment"/>
+        <association property="blog" javaType="com.lxl.pojo.Blog">
+            <id column="blog_id" property="id"/>
+        </association>
+        <association property="parentComment" javaType="com.lxl.pojo.Comment">
+            <id column="bid" property="id"/>
+            <result property="nickname" column="bnickname"/>
+            <result property="email" column="bemail"/>
+            <result property="content" column="bcontent"/>
+            <result property="avatar" column="bavatar"/>
+            <result property="createTime" column="bcreate_time"/>
+            <result property="adminComment" column="badminComment"/>
+        </association>
+    </resultMap>
+
+<!--    新增一个评论-->
+    <insert id="save" parameterType="com.lxl.pojo.Comment">
+    insert into t_comment
+    values (null,#{nickname},#{email},#{content},#{avatar},#{createTime},
+            #{blog.id},#{parentComment.id},#{adminComment})
+    </insert>
+<!--    //通过博客的id查询该篇博客下的评论 -->
+    <select id="findByBlogIdAndParentCommentNull"  parameterType="long" resultMap="commentMap" >
+        select *
+        from t_comment
+        where blog_Id=#{blogId} and parent_comment_id is null
+
+
+    </select>
+    <select id="findById" resultMap="commentMap" parameterType="long">
+        select *
+        from t_comment
+        where id=#{id}
+    </select>
+    <select id="findByParentId" resultMap="commentMap">
+        select *,b.id bid,b.nickname bnickname,b.content bcontent
+        from t_comment a,t_comment b
+        where a.parent_comment_id=#{parentId} and a.parent_comment_id=b.id
+    </select>
+    <select id="findAllCount" resultType="java.lang.Integer">
+        select count(*) from t_comment
+    </select>
+
+</mapper>

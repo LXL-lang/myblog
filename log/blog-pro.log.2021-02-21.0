@@ -1,0 +1,6 @@
+2021-02-21 15:17:59.824  INFO 8980 --- [restartedMain] com.lxl.MyblogApplication         : Starting MyblogApplication using Java 1.8.0_271 on DESKTOP-OLE43BC with PID 8980 (D:\IdeaProjects\myblog\target\classes started by Asus in D:\IdeaProjects\myblog)
+2021-02-21 15:17:59.827 DEBUG 8980 --- [restartedMain] com.lxl.MyblogApplication         : Running with Spring Boot v2.4.3, Spring v5.3.4
+2021-02-21 15:17:59.827  INFO 8980 --- [restartedMain] com.lxl.MyblogApplication         : The following profiles are active: pro
+2021-02-21 15:18:00.490  WARN 8980 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.lxl.myblog]' package. Please check your configuration.
+2021-02-21 15:18:01.118  WARN 8980 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2021-02-21 15:18:01.358  INFO 8980 --- [restartedMain] com.lxl.MyblogApplication         : Started MyblogApplication in 2.022 seconds (JVM running for 3.445)
